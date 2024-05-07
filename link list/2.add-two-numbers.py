@@ -43,4 +43,45 @@ class Solution:
             head.next=tem
         return ret
         
-        
+#第二次写，还是复杂   
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        head=ListNode(None)
+        cur=head
+        plus=0
+        while l1 and l2:
+            ans=l1.val+l2.val+plus
+            plus=ans//10
+            ans=ans-10 if plus!=0 else ans
+            newnode=ListNode(ans)
+            cur.next=newnode
+            cur=cur.next
+            l1=l1.next
+            l2=l2.next
+        while l1:
+            ans=l1.val+plus
+            
+            plus=ans//10
+            ans=ans-10 if plus!=0 else ans
+            newnode=ListNode(ans)
+            cur.next=newnode
+            cur=cur.next
+            l1=l1.next
+        while l2:
+            ans=l2.val+plus
+            plus=ans//10
+            ans=ans-10 if plus!=0 else ans
+            newnode=ListNode(ans)
+            cur.next=newnode
+            cur=cur.next
+            l2=l2.next
+        if plus!=0:
+            newnode=ListNode(plus)
+            cur.next=newnode
+            cur=cur.next
+        return head.next
