@@ -1,3 +1,26 @@
+#这样也行，不需要used数组
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        #不重复的类的，一般是要排序的
+        ret=[]
+        nums.sort()
+
+        def back(ans,index):
+            ret.append(ans[:])
+            for i in range(index,len(nums)):
+                if i>index and nums[i]==nums[i-1]:
+                    continue
+                ans.append(nums[i])
+                back(ans,i+1)
+                ans.pop()
+        
+        back([],0)
+        return ret
+
+
+
+
+
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         n=len(nums)
