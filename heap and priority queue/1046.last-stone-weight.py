@@ -9,3 +9,5 @@ class Solution:
             if t!=0:
                 heapq.heappush(s,t)
         return 0 if not s else -s[0]
+
+
