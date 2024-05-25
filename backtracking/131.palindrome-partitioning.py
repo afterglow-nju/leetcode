@@ -8,7 +8,8 @@ class Solution:
         for i in range(n-1,-1,-1):
             for j in range(i+1,n): #不是很理解为什么从i+1开始
                 f[i][j]=f[i+1][j-1] and s[i]==s[j]
-
+#update in 2024.5.23
+#秒啊，这个遍历顺序，保证用到的一定是遍历过的
 
         def back(ans,index):
             if index==len(s):
