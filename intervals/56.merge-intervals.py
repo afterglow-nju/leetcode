@@ -1,6 +1,27 @@
 class Solution:
     def merge(self, nums: List[List[int]]) -> List[List[int]]:
         ret=[]
+        
+        # 0=beg 1=end 重叠看beg
+        start=sorted([i[0] for i in nums])
+        nums.sort(key=lambda x: x[0])
+        new=nums[0]
+        
+        for i in range(1,len(nums)):
+            if nums[i][1]<=new[1]:
+                continue
+            elif nums[i][0]>new[1]:
+                ret.append(new)
+                new=nums[i]
+            elif nums[i][1]>new[1]:
+                new[1]=nums[i][1]
+        ret.append(new)
+        return ret
+
+
+class Solution:
+    def merge(self, nums: List[List[int]]) -> List[List[int]]:
+        ret=[]
         d=defaultdict(list)
         # 0=beg 1=end 重叠看beg
         for i in nums:
