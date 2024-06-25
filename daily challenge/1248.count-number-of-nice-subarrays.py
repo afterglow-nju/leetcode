@@ -1,5 +1,24 @@
 class Solution:
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
+        odd=[0]*(len(nums)+1)
+        ret=0
+        O=0
+        odd[0]=1
+        #odd[i] stands for i odd number
+        for i in range(len(nums)):
+            if nums[i]%2==1:
+                O+=1
+            #print(O,odd)
+            odd[O]+=1
+            if O>=k:
+                ret+=odd[O-k]
+            
+        #print(odd)
+        return ret
+
+
+class Solution:
+    def numberOfSubarrays(self, nums: List[int], k: int) -> int:
         
         d=defaultdict(set)
         pre=[0]*len(nums)

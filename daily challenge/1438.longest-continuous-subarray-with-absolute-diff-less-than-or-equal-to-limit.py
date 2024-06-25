@@ -1,5 +1,37 @@
 class Solution:
     def longestSubarray(self, nums: List[int], limit: int) -> int:
+        ret=0
+        n=len(nums)
+        t=limit
+
+        qmax=collections.deque()
+        qmin=collections.deque()
+        left=0
+        #qmax.append(0)
+        #qmin.append(0)
+        i=0
+        while i < n:
+            #print("?",nums[i],qmax[-1],qmin[-1])
+            while qmax and nums[qmax[-1]]<nums[i]: #这里注意，不能小于等于！！
+                qmax.pop()
+            while qmin and nums[qmin[-1]]>nums[i]: #
+                qmin.pop()
+            
+            qmin.append(i)
+            qmax.append(i)
+            while qmax and qmin and nums[qmax[0]]-nums[qmin[0]]>limit:
+                if nums[qmax[0]]==nums[left]:
+                    qmax.popleft()
+                if nums[qmin[0]]==nums[left]:
+                    qmin.popleft()
+                left+=1
+            ret=max(ret,i-left+1)
+            i+=1
+        
+        return ret
+
+class Solution:
+    def longestSubarray(self, nums: List[int], limit: int) -> int:
         ret=1
         n=len(nums)
 
