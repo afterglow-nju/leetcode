@@ -1,6 +1,8 @@
 #KMP
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
+        
+        
         class KMP:
             def partial(self,pattern):
                 ret=[0]
@@ -10,6 +12,8 @@ class Solution:
                         j=ret[j-1]
                     ret.append(j+1 if pattern[i]==pattern[j] else j)
                 return ret
+            
+            
             def KMP(self,t,p):
                 partial,ret,j=self.partial(p),[],0
                 for i in range(len(t)):
