@@ -35,7 +35,9 @@ class Solution:
                         vis[v]=True
                         v=a[v]
                     ret-=1
-        
+        #https://www.cnblogs.com/lipu123/p/14728643.html
+        #假设有m个环，完成任务总的交换次数 = 环1元素个数-1+环2元素个数-1+....+环m元素个数-1  = （环1元素个数+环2元素个数+.....+环m元素个数 = 数列元素总个数）- (1+1+....+1 = m)。
+        #所以ret初始化为元素个数，然后while循环看有几个环
         return ret
 
             
