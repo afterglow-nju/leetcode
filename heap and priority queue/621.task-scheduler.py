@@ -13,7 +13,7 @@ class Solution:
         have=0
         #要最大堆
         while len(h)>0 or have>0:
-
+        
             if pop[index]!=0:
                 #print(pop[index],h[0])
                 #一个轮回后，把一个轮回前跑的任务A再放进堆中
